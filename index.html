@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Sono:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+    <title>LOGIN - FIREBASE</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">FIREBASE - PRODUCTOS</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#" data-bs-toggle="modal" data-bs-target="#iniciarModal" id="iniciar">INICIAR SESION</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#crearModal" id="crear">CREAR CUENTA</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" id="btnCerrarSesion">CERRAR CUENTA</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+
+      <div class="card text-center m-4 text-white bg-dark">
+        <div class="card-header">
+           BASE DE DATOS 
+        </div>
+        <div class="card-body" id="container">
+          <h1 class="card-title">MI PRIMERA VEZ CON FIREBASE</h1>
+        </div>
+        <div class="card-footer text-muted">
+             Design with by GUIDO y HEYDAN 
+        </div>
+      </div>
+
+
+      <!-- Modal INICIAR SESION -->
+<div class="modal fade" id="iniciarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-people-fill m-3"></i>INICIAR SESION</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">CORREO ELECTRONICO</label>
+                  <input type="email" class="form-control" id="IniciarEmail" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">CONTRASEÑA</label>
+                  <input type="password" class="form-control" id="IniciarPassword">
+
+                </div>
+              </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-success" id="btnIniciarSesion"><i class="bi bi-person-plus-fill m-2" ></i>INICIAR</button>
+            <button type="button" class="btn btn-info" id="btnGoogle"><i class="bi bi-google m-2"></i>GOOGLE</button>
+            <button type="button" class="btn btn-danger" id="btnAnonimo"><i class="bi bi-person-circle m-2"></i>ANONIMO</button>
+            <button type="button" class="btn btn-dark" id="btnGit"><i class="bi bi-github m-2"></i>GIT HUB</button>
+            <button type="button" class="btn btn-primary" id="btnFace"><i class="bi bi-facebook m-2"></i>FACEBOOK</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- Modal CREAR CUENTA -->
+<div class="modal fade" id="crearModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-receipt m-2"></i>CREAR CUENTA</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">CORREO ELECTRONICO</label>
+                  <input type="email" class="form-control" id="crearEmail" autocomplete="off" required>
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">CONTRASEÑA</label>
+                  <input type="password" class="form-control" id="crearPassword" autocomplete="off" required>
+                </div>
+              </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button"  id="btnCrearCuenta" class="btn btn-success"><i class="bi bi-cloud-download m-2"></i>GUARDAR</button>
+          <button type="button" class="btn btn-warning" data-bs-dismiss="modal"><i class="bi bi-x-lg m-2"></i>CANCELAR</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Modal Añadir alumnos -->
+<div class="modal fade"  id="agregarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-database-fill-add m-2"></i>AÑADIR PRODUCTOS</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <form class="formAddAlumno">
+              <div class="mb-3">
+                <label for="exampleInputControl" class="form-label">ID DEL PRODUCTO</label>
+                <input type="text" class="form-control" id="nocontrol" placeholder="ID">
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputNombre" class="form-label">NOMBRE</label>
+                <input type="text" class="form-control" id="nombre" placeholder="NOMBRE">
+              </div>
+              <div class="mb-3">
+              <label for="exampleInputAP" class="form-label">PRECIO</label>
+              <input type="text" class="form-control" id="apaterno" placeholder="PRECIO">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputAM" class="form-label">PROVEEDOR</label>
+              <input type="text" class="form-control" id="amaterno" placeholder="PROVEEDOR">
+            </div>
+            <div class="mb-3">
+            <label for="exampleInputCarrera" class="form-label">CADUCIDAD</label>
+            <input type="text" class="form-control" id="carrera" placeholder="CADUCIDAD">
+          </div>
+          <div class="mb-3"></div>
+            <label for="exampleInputNivel" class="form-label">CONTENIDO</label>
+            <input type="text" class="form-control" id="nivel" placeholder="CONTENIDO">
+            </form>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary"  id="btnAgregarAlumno" data-bs-dismiss="modal"><i class="bi bi-bookmark-check-fill m-2"></i>GUARDAR</button>
+        <button type="button" class="btn btn-warning"  data-bs-dismiss="modal"><i class="bi bi-x-lg m-2"></i>CANCELAR</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- Modal Editar alumnos-->
+<div class="modal fade"  id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-credit-card m-2"></i>EDITAR PRODUCTOS</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <form class="formEditAlumno">
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">ID DEL PRODUCTO</label>
+                <input type="text" class="form-control" id="enocontrol" aria-describedby="emailHelp">
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">NOMBRE</label>
+                <input type="text" class="form-control" id="enombre">
+              </div>
+              <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">PRECIO</label>
+              <input type="text" class="form-control" id="eapaterno" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">PROVEEDOR</label>
+              <input type="text" class="form-control" id="eamaterno">
+            </div>
+            <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">CADUCIDAD</label>
+            <input type="text" class="form-control" id="ecarrera" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3"></div>
+            <label for="exampleInputCarrera" class="form-label">CONTENIDO</label>
+            <input type="text" class="form-control" id="enivel" placeholder="NIVEL DE ESTUDIOS">
+          </form>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning"  data-bs-dismiss="modal"><i class="bi bi-file-excel m-2"></i>CANCELAR</button>
+        <button type="button" class="btn btn-success"  id="btnGuardarAlumno"><i class="bi bi-download m-2"></i>GUARDAR</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- Modal QR de alumnos-->
+<div class="modal fade"  id="qrModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"></i>Codigo QR</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+             <center><div id="contenedorQR"></div></center>
+
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.8/dist/sweetalert2.all.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="qrcode.min.js"></script> 
+<script src="app.js" type="module"></script>  
+ <script src="crud.js" type="module"></script> 
+</body>
+</html>
